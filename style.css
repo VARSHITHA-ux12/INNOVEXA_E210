@@ -1,0 +1,19 @@
+body{
+  width:300px;
+  padding:15px;
+  font:14px "Segoe UI",Arial;
+  background:linear-gradient(135deg,#6ef054,#f18605);
+  color:#f80606;
+}
+h2{margin:0 0 10px;text-align:center}
+input,select{width:100%;padding:8px;margin:6px 0;border:none;border-radius:6px}
+.row{display:flex;gap:8px;margin-top:10px}
+button{flex:1;padding:10px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+#voice{background:#22c55e}
+#go{background:#facc15;color:#000}
+
+/* on-page highlight */
+.ai-highlight{
+  outline:4px solid red !important;
+  outline-offset:2px;
+}

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "AI Website Assistant",
+  "version": "1.0",
+  "description": "Speak or type to find anything on a page – no server needed.",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
