@@ -1,18 +1,91 @@
 {
   "manifest_version": 3,
-  "name": "AI Website Assistant",
-  "version": "1.0",
-  "description": "Speak or type to find anything on a page – no server needed.",
-  "permissions": ["activeTab"],
-  "action": {
-    "default_popup": "popup.html"
+  "name": "AI Web Assistant",
+  "version": "1.0.0",
+  "description": "Universal AI-powered website assistant that understands website structure and provides intelligent guidance",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
   },
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["style.css"],
+      "js": [
+        "lib/webextension-polyfill.js",
+        "lib/anime.min.js",
+        "lib/pixi.min.js",
+        "lib/echarts.min.js",
+        "lib/splitting.js",
+        "lib/typed.js",
+        "lib/splide.min.js",
+        "utils/browser-api.js",
+        "utils/storage-manager.js",
+        "utils/message-handler.js",
+        "utils/ai-processor.js",
+        "content/element-finder.js",
+        "content/task-assistant.js",
+        "content/ui-injector.js",
+        "content/content.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
       "run_at": "document_idle"
     }
-  ]
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "AI Web Assistant",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/images/*",
+        "assets/fonts/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "minimum_chrome_version": "88",
+  "author": "AI Web Assistant Team",
+  "homepage_url": "https://github.com/ai-web-assistant/extension",
+  
+  "name__i18n": {
+    "message": "AI Web Assistant"
+  },
+  "description__i18n": {
+    "message": "Universal AI-powered website assistant"
+  }
 }
